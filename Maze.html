@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        background-color: pink;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    h1{
+        font-size: 50px;
+        color: black;
+        margin-bottom: 20px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    #maze-container{
+        border: 10px solid black;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+    }
+
+    .row{
+        display: flex;
+    }
+
+    .cell{
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgb(255, 192, 227);
+        background-color: rgb(255, 192, 227);
+    }
+
+    .wall{
+        background-color: black;
+        border: 1px solid black;
+    }
+
+    #kitten{
+        position: absolute;
+        /*top:0;
+        left:0;*/
+        bottom: 0;
+        left:40px;
+    }
+
+    #house{
+        position: absolute;
+        /*right:0;
+        bottom:0;*/
+        right:40px;
+        top: 0;
+    }
+</style>
+
+<body onload="createMaze()">
+    <h1> Kitten Maze</h1>
+    <div id="maze-container">
+        <img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png" id="kitten" alt="kitten" width="40px" height="40px">
+        <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="40px" height="40px">
+    </div>
+
+
+
+</body>
+
+<script>
+    let map=[  // 0=wall , 1=space , 2=kitten
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0],
+    [0,1,0,1,0,1,1,1,0,1,1,1,1,0,1,1,1,0],
+    [0,1,1,1,1,1,0,1,0,1,1,0,1,0,1,1,1,0],
+    [0,1,0,1,1,1,0,1,0,1,1,0,1,0,1,0,0,0],
+    [0,1,0,0,0,0,0,1,1,1,1,0,1,1,1,0,1,0],
+    [0,1,0,1,1,1,1,1,0,0,1,0,0,0,0,0,1,0],
+    [0,1,0,1,0,1,0,1,1,0,1,1,1,1,1,1,1,0],
+    [0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,1,1,0],
+    [0,1,0,1,0,1,1,1,0,1,1,1,1,0,1,0,1,0],
+    [0,0,0,0,0,0,1,1,0,1,0,0,1,1,1,0,1,0],
+    [0,0,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0],
+    [0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0],
+    [0,0,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,0],
+    [0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1,0],
+    [0,1,1,1,1,0,1,0,1,1,1,0,0,1,1,0,1,0],
+    [0,1,1,1,0,0,1,0,1,0,1,1,0,0,1,1,1,0],
+    [0,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0],
+    [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    ]
+
+
+    let maze = document.getElementById("maze-container");
+    let kitten = document.getElementById("kitten");
+    let house = document.getElementById("house");
+
+    function setKittenPositin(x,y){
+        kitten.style.top = x + "px";
+        kitten.style.left = y + "px";
+    }
+
+    function setHousenPositin(x,y){
+        house.style.bottom = x + "px";
+        house.style.right = y + "px";
+    }
+
+
+    function createMaze(){
+        for(let i=0 ; i < map.length; i++){
+            let row = document.createElement("div"); //สร้าง div แต่ละ row (0-3): <div></div>
+            row.classList.add("row"); //ใส่ชื่อ class row  : <div class="row"></div>
+
+            for(let j=0 ; j< map[i].length ;j++){
+                let cell = document.createElement("div");
+                cell.classList.add("cell"); 
+
+                /*
+                    <div class="row">
+
+                        <div class="wall cell" ></div>
+                        <div class="cell" ></div>
+                        <div class="cell" ></div>
+                        <div class="cell" ></div>
+                    
+                    </div>
+                
+                */
+
+                if(map[i][j] == 0){
+                    cell.classList.add("wall");
+                }
+
+                if(i == 0 && j == 0){
+                    map[i][j] = 2; //กำหนดตำแหน่งแมวเป็น 2 คือจุด 0 0
+                }
+                row.appendChild(cell); //ให้ div cell อยู่ใน div row
+                
+            }
+            maze.appendChild(row); //ให้ div row อยู่ใน div maze
+        }
+
+        /*setKittenPositin(0,0);
+        setHousePositin(0,0);*/
+
+    }
+
+
+    function getKittenPosition(){
+        let position = [-1,-1]; //กำหนดไว้ชั่วคราว
+        for(let i=0 ; i<map.length ; i++){
+            for(let j=0 ; j<map[i].length ; j++){
+                if(map[i][j]==2){
+                    position[0] = i;
+                    position[1] = j;
+                }
+            }
+        }
+
+        console.log(position);
+        return position;
+    }
+
+    document.addEventListener("keydown",
+    function (e){
+        let kitten = document.getElementById("kitten");
+        let house = document.getElementById("house");
+    }
+    )
+
+
+</script>
+
+</html>
