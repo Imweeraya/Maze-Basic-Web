@@ -94,7 +94,8 @@
     }
 </style>
 
-<body onload="createMaze()" style="font-family: Open Sans, -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,Helvetica Neue, Helvetica, Arial, sans-serif;">
+<body onload="createMaze()"
+    style="font-family: Open Sans, -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,Helvetica Neue, Helvetica, Arial, sans-serif;">
     <h1> Kitten Maze</h1>
     <div class="time">
         <div class="minute" id="minute"></div>
@@ -116,7 +117,6 @@
 
 
 <script>
-<<<<<<< HEAD
     let map = [  // 0=wall , 1=space , 2=kitten
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
         [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -135,28 +135,7 @@
         [0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0],
         [0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0],
         [0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-=======
-    let map=[  // 0=wall , 1=space , 2=kitten 
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-    [0,1,0,1,0,1,1,1,0,1,1,1,1,0,1,1,1,0],
-    [0,1,1,1,1,1,0,1,0,1,1,0,1,0,1,1,1,0],
-    [0,1,0,1,1,1,0,1,0,1,1,0,1,0,1,0,0,0],
-    [0,1,0,0,0,0,0,1,1,1,1,0,1,1,1,0,1,0],
-    [0,1,0,1,1,1,1,1,0,0,1,0,0,0,0,0,1,0],
-    [0,1,0,1,0,1,0,1,1,0,1,1,1,1,1,1,1,0],
-    [0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,1,1,0],
-    [0,1,0,1,0,1,1,1,0,1,1,1,1,0,1,0,1,0],
-    [0,0,0,0,0,0,1,1,0,1,0,0,1,1,1,0,1,0],
-    [0,0,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0],
-    [0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0],
-    [0,0,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,0],
-    [0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1,0],
-    [0,1,1,1,1,0,1,0,1,1,1,0,0,1,1,0,1,0],
-    [0,1,1,1,0,0,1,0,1,0,1,1,0,0,1,1,1,0],
-    [0,1,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0],
-    [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
->>>>>>> c5ca51defd3161e2f587a8a3d8b39e9cae69161f
+        [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]
 
 
@@ -250,72 +229,68 @@
     }
 
     document.addEventListener("keydown",
-<<<<<<< HEAD
+
+
         function (e) {
             let kitten = document.getElementById("kitten");
             let house = document.getElementById("house");
-        }
-=======
-    function (e){
-        let kitten = document.getElementById("kitten");
-        let house = document.getElementById("house");
 
-        let kittenLeft = kitten.offsetLeft;
-        let kittenTop = kitten.offsetTop;
+            let kittenLeft = kitten.offsetLeft;
+            let kittenTop = kitten.offsetTop;
 
-        let houseLeft = house.offsetLeft;
-        let houseTop = house.offsetTop;
+            let houseLeft = house.offsetLeft;
+            let houseTop = house.offsetTop;
 
-        let kittenPosition = getKittenPosition();
+            let kittenPosition = getKittenPosition();
 
-        if(e.key == "ArrowRight" && kittenLeft < (map.length - 1)*40 && map[kittenPosition[0]][kittenPosition[1] + 1 ] == 1 ){
+            if (e.key == "ArrowRight" && kittenLeft < (map.length - 1) * 40 && map[kittenPosition[0]][kittenPosition[1] + 1] == 1) {
                 kittenLeft += 40;
                 kitten.style.left = kittenLeft + "px";
                 map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0]][kittenPosition[1] + 1 ]  = 2;
-            
-        }
+                map[kittenPosition[0]][kittenPosition[1] + 1] = 2;
 
-        if(e.key == "ArrowLeft" && kittenLeft > 0 && map[kittenPosition[0]][kittenPosition[1] - 1 ] == 1 ){
+            }
+
+            if (e.key == "ArrowLeft" && kittenLeft > 0 && map[kittenPosition[0]][kittenPosition[1] - 1] == 1) {
                 kittenLeft -= 40;
                 kitten.style.left = kittenLeft + "px";
                 map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0]][kittenPosition[1] - 1 ]  = 2;
-            
-        }
+                map[kittenPosition[0]][kittenPosition[1] - 1] = 2;
 
-
-
-        if(e.key == "ArrowUp" && kittenTop > 0 && map[kittenPosition[0] - 1][kittenPosition[1]] == 1 || map[kittenPosition[0][kittenPosition[5]]]){
-                kittenTop -= 40;
-                kitten.style.top = kittenTop + "px";
-                map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0] - 1][kittenPosition[1]]  = 2;
-            
-        }
-
-        if(e.key == "ArrowDown" && kittenTop < (map.length - 1)*40 && map[kittenPosition[0] + 1][kittenPosition[1]] == 1){
-                kittenTop += 40;
-                kitten.style.top = kittenTop + "px";
-                map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0] + 1][kittenPosition[1]]  = 2;
-            
-        }
-
-        if(kittenLeft == houseLeft && kittenTop == houseTop){
-            Swal.fire(
-                'Good job!',
-                'You clicked the button!',
-                'success'
-            )
             }
 
 
-    }
->>>>>>> c5ca51defd3161e2f587a8a3d8b39e9cae69161f
+
+            if (e.key == "ArrowUp" && kittenTop > 0 && map[kittenPosition[0] - 1][kittenPosition[1]] == 1 || map[kittenPosition[0][kittenPosition[5]]]) {
+                kittenTop -= 40;
+                kitten.style.top = kittenTop + "px";
+                map[kittenPosition[0]][kittenPosition[1]] = 1;
+                map[kittenPosition[0] - 1][kittenPosition[1]] = 2;
+
+            }
+
+            if (e.key == "ArrowDown" && kittenTop < (map.length - 1) * 40 && map[kittenPosition[0] + 1][kittenPosition[1]] == 1) {
+                kittenTop += 40;
+                kitten.style.top = kittenTop + "px";
+                map[kittenPosition[0]][kittenPosition[1]] = 1;
+                map[kittenPosition[0] + 1][kittenPosition[1]] = 2;
+
+            }
+
+            if (kittenLeft == houseLeft && kittenTop == houseTop) {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            }
+
+
+        }
+
     )
 
-    
+
 
 
 
