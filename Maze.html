@@ -194,18 +194,24 @@
         /*setKittenPositin(0,0);
         setHousePositin(0,0);*/
 
-        a()
+        timeCount()
     }
-    let countSec = 10;
+    let countSec = 5;
+    let countMin = 2;
     let countAll = null
 
-    function a() {
+    function timeCount() {
         countAll = setInterval(time, 1000)
     }
     function time() {
-        if (countSec > 0) {
-            sec.innerHTML = countSec;
-            countSec = countSec - 1;
+        if (countSec != 0 && countMin > -1) {
+            sec.innerHTML = countMin+" : "+ countSec;
+            countSec--
+                if(countSec==0){
+                    countSec = 5
+                    countMin--
+                }
+
         } else {
             sec.innerHTML = 0;
             clearInterval(countAll)
