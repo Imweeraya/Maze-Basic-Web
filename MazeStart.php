@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +68,7 @@
         <div class="button-maze" onclick="cha()">Select Character</div>
         <div class="button-maze" onclick="showPopup()">How to play</div>
     </div>
-
+    <?php echo "hi"?>
     <script>
         function maze(){
             window.location.href = "Maze.html"
