@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+    <style>
+        *{
+            background-color: #F4BBD0;
+        }
+        .top{
+            width: 100%;
+            height: 100px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 7rem;
+        }
+        .title-g{
+            font-size: 105px;
+            margin: 0 2rem;
+            color: #F6F3E4;
+            text-shadow: 3px 2px rgb(90,222,245);
+        }
+        .container{
+            width: 1000px;
+            height: 500px;
+            margin: 0 auto;
+            padding-top: 7rem;
+        }
+        .button-maze{
+            width: 500px;
+            height: 100px;
+            margin: 3rem auto;
+            border-radius: 30px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            background-color: #F57A7A;
+            font-size: 50px;
+            color: #F6F3E4;
+            text-shadow: 1px 2px gray;
+            box-shadow: 0.7rem 0.7rem gray;
+        }
+        .button-maze:hover{
+            background-color: #de2e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="img-l"><img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/3-2.thumb128.png" alt="cat-l"></div>
+        <div class="title-g"><em>Kitten Maze</em></div>
+        <div class="img-r"><img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/12-2.thumb128.png" alt="cat-r"></div>
+    </div>
+    <div class="container">
+        <div class="button-maze" onclick="click()">Start</div>
+        <div class="button-maze" onclick="click()">Select Character</div>
+        <div class="button-maze" onclick="click()">How to play</div>
+    </div>
+
+    <script>
+        function click(){
+            console.log(55)
+        }
+    </script>
+</body>
+</html>
