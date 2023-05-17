@@ -47,6 +47,7 @@
             color: #F6F3E4;
             text-shadow: 1px 2px gray;
             box-shadow: 0.7rem 0.7rem #8f7968;
+            
         }
         .button-maze:hover{
             background-color: #f5c6c9;
@@ -60,14 +61,17 @@
         <div class="img-r"><img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/12-2.thumb128.png" alt="cat-r"></div>
     </div>
     <div class="container">
-        <div class="button-maze" onclick="click()">Start</div>
-        <div class="button-maze" onclick="click()">Select Character</div>
+        <div class="button-maze" onclick="maze()">Start</div>
+        <div class="button-maze" onclick="cha()">Select Character</div>
         <div class="button-maze" onclick="showPopup()">How to play</div>
     </div>
 
     <script>
-        function click(){
-            console.log(55) 
+        function maze(){
+            window.location.href = "Maze.html"
+        }
+        function cha(){
+            window.location.href = "#"
         }
         function showPopup() {
             Swal.fire({
