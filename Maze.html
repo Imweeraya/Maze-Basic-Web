@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -16,7 +17,7 @@
     }
 
     body {
-        background-color: pink;
+        background-color: #ffc0cb;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -93,10 +94,23 @@
         text-align: center;
         justify-content: center;
     }
+
+    #character-options {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+     }
+
+    .character-option {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
 </style>
 
 <body onload="createMaze()"
-    <h1> Kitten Maze</h1>
+    <h1>Kitten Maze</h1>
     <div class="time">
         <div class="minute" id="minute"></div>
         <div class="sec" id="sec"></div>
@@ -106,6 +120,13 @@
             alt="kitten" width="40px" height="40px">
         <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="40px"
             height="40px">
+    </div>
+
+    <div id="character-options">
+        <img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png"
+            id="kitten-option1" alt="Kitten 1" width="40px" height="40px">
+        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/19446/cartoon-cat-face-clipart-xl.png" 
+        id="kitten-option2" alt="Kitten 2" width="40px" height="40px">
     </div>
 
 
@@ -138,12 +159,20 @@
         [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]
 
+    document.getElementById("character-options").addEventListener("click", function(event) {
+     if (event.target.classList.contains("character-option")) {
+        var characterImageSrc = event.target.src;
+        document.getElementById("kitten").src = characterImageSrc;
+    }
+    });
 
     let maze = document.getElementById("maze-container");
     let kitten = document.getElementById("kitten");
     let house = document.getElementById("house");
     let minute = document.getElementById("minute");
     let sec = document.getElementById("sec");
+
+    
 
 
     function setKittenPositin(x, y) {
@@ -215,7 +244,14 @@
         } else {
             sec.innerHTML = 0;
             clearInterval(countAll)
-            alert("GAME OVER")
+            Swal.fire({
+                title: 'Sweet!',
+                text: 'Modal with a custom image.',
+                imageUrl: 'https://unsplash.it/400/200',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+                })
         }
     }
 

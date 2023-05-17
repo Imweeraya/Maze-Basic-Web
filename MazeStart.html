@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
     <title>Maze Game</title>
     <style>
         *{
-            background-color: #F4BBD0;
+            background-color: #ffc0cb;
+        }
+        body {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
         }
         .top{
             width: 100%;
@@ -20,8 +25,8 @@
         .title-g{
             font-size: 105px;
             margin: 0 2rem;
-            color: #F6F3E4;
-            text-shadow: 3px 2px rgb(90,222,245);
+            color: #FDE8E9;
+            text-shadow: 3px 2px #36827F;
         }
         .container{
             width: 1000px;
@@ -37,14 +42,14 @@
             align-items: center;
             display: flex;
             justify-content: center;
-            background-color: #F57A7A;
+            background-color: #504136;
             font-size: 50px;
             color: #F6F3E4;
             text-shadow: 1px 2px gray;
-            box-shadow: 0.7rem 0.7rem gray;
+            box-shadow: 0.7rem 0.7rem #8f7968;
         }
         .button-maze:hover{
-            background-color: #de2e2e;
+            background-color: #f5c6c9;
         }
     </style>
 </head>
@@ -57,12 +62,36 @@
     <div class="container">
         <div class="button-maze" onclick="click()">Start</div>
         <div class="button-maze" onclick="click()">Select Character</div>
-        <div class="button-maze" onclick="click()">How to play</div>
+        <div class="button-maze" onclick="showPopup()">How to play</div>
     </div>
 
     <script>
         function click(){
-            console.log(55)
+            console.log(55) 
+        }
+        function showPopup() {
+            Swal.fire({
+                title: 'How to play Kitten Maze',
+                html: `
+                <p>Use the arrow keys to move the kitten through the maze.</p>
+                <p>Find the key to unlock the exit.</p> 
+                <p>Avoid the BOMB and reach the end to win!</p>
+                <p>Cake is special gift</p>
+                `,
+                imageUrl: 'https://cdn-icons-png.flaticon.com/512/3468/3468341.png',
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: 'Cat',
+                padding: '2em',
+                confirmButtonText: 'Got it!',
+                background: '#ffc0cb url(https://sweetalert2.github.io/#downloadimages/trees.png) ',
+                backdrop: `
+                    rgba(0,0,123,0.4)
+                    url("https://media.tenor.com/xzjlrhYq_lQAAAAj/cat-nyan-cat.gif")
+                    left top
+                    no-repeat
+                `
+            })
         }
     </script>
 </body>
