@@ -3,6 +3,7 @@ session_start()
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +12,20 @@ session_start()
 
     <title>Maze Game</title>
     <style>
-        *{
-            background-color: #ffc0cb;
+        * {
+
+            background-size: cover;
+
         }
+
         body {
-            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            background-color: #ffc0cb;
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        .top{
+
+        .top {
             width: 100%;
             height: 100px;
             align-items: center;
@@ -25,39 +33,50 @@ session_start()
             justify-content: center;
             margin-top: 7rem;
         }
-        .title-g{
-            font-size: 105px;
-            margin: 0 2rem;
-            color: #FDE8E9;
+
+        .title-g {
+            font-size: 135px;
+            margin: 0 3rem;
+            color: #504136;
             text-shadow: 3px 2px #36827F;
+            font-family: 'Courier New', Courier, monospace;
         }
-        .container{
+
+        .container {
             width: 1000px;
             height: 500px;
             margin: 0 auto;
             padding-top: 7rem;
         }
-        .button-maze{
+
+        .button-maze {
             width: 500px;
             height: 100px;
             margin: 3rem auto;
             border-radius: 30px;
-            align-items: center;
             display: flex;
+            align-items: center;
             justify-content: center;
             background-color: #504136;
-            font-size: 50px;
+            font-size: 40px;
             color: #F6F3E4;
             text-shadow: 1px 2px gray;
             box-shadow: 0.7rem 0.7rem #8f7968;
-            
+            font-family: 'Courier New', Courier, monospace;
+            transition: background-color 0.3s ease;
         }
-        .button-maze:hover{
+
+        .button-maze:hover {
             background-color: #f5c6c9;
         }
     </style>
 </head>
+
 <body>
+    <audio controls loop autoplay>
+        <source srcset="BMGPM_GRML0059_020_Game_On_A_Day-Off__Ohmori.mp3" type="audio/mp3">
+    </audio>
+
     <div class="top">
         <div class="img-l"><img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/3-2.thumb128.png" alt="cat-l"></div>
         <div class="title-g"><em>Kitten Maze</em></div>
@@ -68,14 +87,16 @@ session_start()
         <div class="button-maze" onclick="character()">Select Character</div>
         <div class="button-maze" onclick="showPopup()">How to play</div>
     </div>
-    <?php echo "hi"?>
+    <?php echo "hi" ?>
     <script>
-        function maze(){
+        function maze() {
             window.location.href = "Maze.html"
         }
-        function character(){
+
+        function character() {
             window.location.href = "Cha.html"
         }
+
         function showPopup() {
             Swal.fire({
                 title: 'How to play Kitten Maze',
@@ -99,7 +120,10 @@ session_start()
                     no-repeat
                 `
             })
+
+
         }
     </script>
 </body>
+
 </html>
