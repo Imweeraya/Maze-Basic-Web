@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
     <title>Document</title>
 </head>
 
 <style>
-    * {
+    *{
         margin: 0;
         padding: 0;
-        font-family: Open Sans, -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,Helvetica Neue, Helvetica, Arial, sans-serif;
     }
 
-    body {
-        background-color: #ffc0cb;
+    body{
+        background-color: pink;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -26,14 +23,14 @@
         height: 100vh;
     }
 
-    h1 {
+    h1{
         font-size: 50px;
         color: black;
         margin-bottom: 20px;
         font-family: 'Courier New', Courier, monospace;
     }
 
-    #maze-container {
+    #maze-container{
         border: 10px solid black;
         position: relative;
         display: flex;
@@ -41,93 +38,105 @@
         width: max-content;
     }
 
-    .row {
+    .row{
         display: flex;
     }
 
-    .cell {
-        width: 40px;
-        height: 40px;
+    .cell{
+        width: 30px;
+        height: 30px;
         /*border: 1px solid rgb(255, 192, 227);*/
         background-color: rgb(255, 192, 227);
     }
 
-    .wall {
+    .wall{
         background-color: black;
         /*border: 1px solid black;*/
     }
 
-    #kitten {
+    .bomb{
+        content:url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/60401/bomb-clipart-xl.png);
+    }
+    
+    .cupcake{
+        content:url(https://static.vecteezy.com/system/resources/previews/019/606/495/non_2x/cupcake-graphic-clipart-design-free-png.png);
+    }
+
+    .key{
+        content:url(https://www.pngmart.com/files/8/Key-PNG-Free-Image-1.png);
+    }
+
+    .timer{
+        background-color: black;
+        color: white;
+    }
+
+    #timer{
+        background-color: black;
+        color: white;
+    }
+
+
+
+
+    #kitten{
         position: absolute;
         /*top:0;
         left:0;*/
-        height: 40px;
-        width: 40px;
-        bottom: 0;
-        left: 40px;
+        height: 30px;
+        width: 30px;
+        bottom: 0px;
+        left: 30px;
     }
 
-    #house {
+    #house{
         position: absolute;
         /*right:0;
         bottom:0;*/
-        right: 40px;
+        right:30px;
         top: 0;
     }
 
-    .time {
-        border: 1px solid red;
-        width: 100%;
-        height: 60px;
-        display: flex;
-        margin-bottom: 1rem;
-    }
 
-    .minute {
-        width: 50%;
-        border: 1px solid green;
-    }
-
-    .sec {
-        width: 50%;
-        border: 1px solid blue;
-        text-align: center;
-        justify-content: center;
-    }
-
-    #character-options {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-     }
-
-    .character-option {
-        width: 40px;
-        height: 40px;
-        margin: 0 10px;
-        cursor: pointer;
-    }
+    
 </style>
 
-<body onload="createMaze()"
-    <h1>Kitten Maze</h1>
-    <div class="time">
-        <div class="minute" id="minute"></div>
-        <div class="sec" id="sec"></div>
-    </div>
+<body onload="createMaze()" style="font-family: Open Sans, -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,Helvetica Neue, Helvetica, Arial, sans-serif;">
+    
+    <h1> Kitten Maze</h1>
     <div id="maze-container">
-        <img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png" id="kitten"
-            alt="kitten" width="40px" height="40px">
-        <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="40px"
-            height="40px">
+        <div id="character"><img src="https://storage.googleapis.com/sticker-prod/NmZzFCJZoBxP2w7c6Ejh/7-1.thumb128.webp" id="kitten" alt="kitten" width="30px" height="30px">
+        <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px">
+        </div>
+        <div id="maze"></div>
     </div>
 
-    <div id="character-options">
-        <img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png"
-            id="kitten-option1" alt="Kitten 1" width="40px" height="40px">
-        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/19446/cartoon-cat-face-clipart-xl.png" 
-        id="kitten-option2" alt="Kitten 2" width="40px" height="40px">
+    <div class="score_board">
+
+        <div class="board cupcakescore">
+          <div class="cupcake-title">
+            CUPCAKE
+          </div>
+          <div class="cupcake-score">
+            <p id="cakescore">0</p>
+          </div>
+        </div>
+
+        <div class="board keyscore">
+          <div class="key-title">
+            KEY
+          </div>
+          <div class="key-score">
+            <p id="keyscore">0</p>
+          </div>
+        </div>
     </div>
+    
+    <div id="timer" class="timer"></div>
+
+
+
+    <button class="Restart-button" onclick="restart()"> Restart </button>
 
 
 
@@ -138,62 +147,170 @@
 
 
 <script>
-    let map = [  // 0=wall , 1=space , 2=kitten
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
-        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0],
-        [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0],
-        [0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
-        [0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
-        [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
-        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0],
-        [0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0],
-        [0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0],
-        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0],
-        [0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
-        [0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0],
-        [0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0],
-        [0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0],
-        [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ]
 
-    document.getElementById("character-options").addEventListener("click", function(event) {
-     if (event.target.classList.contains("character-option")) {
-        var characterImageSrc = event.target.src;
-        document.getElementById("kitten").src = characterImageSrc;
-    }
-    });
 
-    let maze = document.getElementById("maze-container");
+    let maze = document.getElementById("maze");
+    let maze_con = document.getElementById("maze-container");
+    let character = document.getElementById("character");
     let kitten = document.getElementById("kitten");
     let house = document.getElementById("house");
-    let minute = document.getElementById("minute");
-    let sec = document.getElementById("sec");
 
+    // ------------------------------ Time ------------------------------------
+
+var seconds = 60;
+
+           
+function NubwiNatee(){
     
+    var mimnutes = Math.round((seconds - 30) / 60);
+    var Nubwi = seconds % 60;
+
+    if(Nubwi < 10){
+        Nubwi = "0" + Nubwi;
+    }
+
+    document.getElementById("timer").innerHTML = mimnutes + " : " + Nubwi;
+
+    if(seconds == 0){
+        seconds = null;
+        Swal.fire({
+        imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/23-2.thumb128.png',
+        imageHeight: 150,
+        title : 'OHH TIME OUT...MEOWWWW!!',
+        text: 'Click button to try again Meow!',
+        imageAlt: 'A tall image',
+        confirmButtonText: 'MEOW'}).then((result) => {
+            if (result.isConfirmed) {
+                count = 1;
+                createMaze();
+                return;
+            }else{
+                count = 1;
+                createMaze();
+                return;
+            }
+        })
+    }else{
+        seconds--;
+    }
+    
+}
+var countdownTimer = setInterval('NubwiNatee()',1000)
 
 
-    function setKittenPositin(x, y) {
-        kitten.style.top = x + "px";
+/*-----------------------------------------------------------------------------------------*/
+
+    function setKittenPosition(x,y){
+        kitten.style.bottom = x + "px";
         kitten.style.left = y + "px";
     }
 
-    function setHousenPositin(x, y) {
-        house.style.bottom = x + "px";
+    function setHousenPosition(x,y){
+        house.style.top = x + "px";
         house.style.right = y + "px";
     }
 
+    function setBombPosition(x,y){
+        kitten.style.bottom = x + "px";
+        kitten.style.left = y + "px";
+    }
 
-    function createMaze() {
-        for (let i = 0; i < map.length; i++) {
+    var map =
+        [  //position(add class)1 0=wall , 1=space , 2=kitten  , 3=cupcake , 5=bomb  position(active)2  0=nothing , 1=boom bomb , 2=collect cupcake
+            // cupcake [3,2]  , bomb [5,1] , kitten [2,0] , wall [0,0] , space [1,0]
+        [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0]],
+        [[0,0],[4,3],[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[0,0],[3,2],[5,1],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[1,0],[5,1],[1,0],[0,0],[1,0],[0,0],[1,0],[5,1],[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[0,0],[1,0],[1,0],[0,0],[1,0],[0,0],[1,0],[0,0],[0,0],[0,0]],
+        [[0,0],[5,1],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[3,2],[5,1],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0],[3,2],[0,0]],
+        [[0,0],[3,2],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[1,0],[0,0],[1,0],[0,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[5,1],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[3,2],[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[0,0],[1,0],[0,0],[1,0],[0,0]],
+        [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[5,1],[1,0],[0,0],[1,0],[0,0],[0,0],[3,2],[1,0],[1,0],[0,0],[1,0],[0,0]],
+        [[0,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[5,1],[0,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[1,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+        [[0,0],[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[0,0],[1,0],[0,0],[1,0],[0,0],[5,1],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[5,1],[3,2],[0,0],[3,2],[0,0],[1,0],[1,0],[1,0],[0,0],[0,0],[3,2],[1,0],[0,0],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[1,0],[0,0],[0,0],[1,0],[0,0],[1,0],[0,0],[1,0],[1,0],[0,0],[0,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[0,0],[3,2],[1,0],[1,0],[1,0],[5,1],[1,0],[0,0]],
+        [[0,0],[2,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
+        ]
+
+
+    var count = 0
+    var count_Cupcake = 0
+    var key = 0;
+
+
+    function createMaze(){
+
+        NubwiNatee();
+        
+        if(count == 1){
+            
+            seconds = 59; 
+            count = 0
+            count_Cupcake = 0
+            key = 0
+            
+
+            character.innerHTML=`<img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png" id="kitten" alt="kitten" width="30px" height="30px">
+        <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px"> `
+        
+
+            
+           
+        map = [  //position(add class)1 0=wall , 1=space , 2=kitten  , 3=cupcake , 5=bomb  position(active)2  0=nothing , 1=boom bomb , 2=collect cupcake
+            // cupcake [3,2]  , bomb [5,1] , kitten [2,0] , wall [0,0] , space [1,0]
+        [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0]],
+        [[0,0],[4,3],[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[0,0],[3,2],[5,1],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[1,0],[5,1],[1,0],[0,0],[1,0],[0,0],[1,0],[5,1],[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[0,0],[1,0],[1,0],[0,0],[1,0],[0,0],[1,0],[0,0],[0,0],[0,0]],
+        [[0,0],[5,1],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[3,2],[5,1],[1,0],[0,0],[1,0],[1,0],[1,0],[0,0],[3,2],[0,0]],
+        [[0,0],[3,2],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[1,0],[0,0],[1,0],[0,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[5,1],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[3,2],[0,0],[1,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[0,0],[1,0],[0,0],[1,0],[0,0]],
+        [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[5,1],[1,0],[0,0],[1,0],[0,0],[0,0],[3,2],[1,0],[1,0],[0,0],[1,0],[0,0]],
+        [[0,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[1,0],[1,0],[1,0],[5,1],[0,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[1,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+        [[0,0],[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[0,0],[1,0],[0,0],[1,0],[0,0],[5,1],[0,0],[0,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[5,1],[3,2],[0,0],[3,2],[0,0],[1,0],[1,0],[1,0],[0,0],[0,0],[3,2],[1,0],[0,0],[1,0],[0,0]],
+        [[0,0],[1,0],[1,0],[1,0],[0,0],[0,0],[1,0],[0,0],[1,0],[0,0],[1,0],[1,0],[0,0],[0,0],[1,0],[1,0],[1,0],[0,0]],
+        [[0,0],[1,0],[0,0],[1,0],[1,0],[1,0],[1,0],[1,0],[1,0],[0,0],[0,0],[3,2],[1,0],[1,0],[1,0],[5,1],[1,0],[0,0]],
+        [[0,0],[2,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
+        ]
+        }
+        
+        maze.innerHTML = ``
+
+        document.getElementById("cakescore").innerHTML = count_Cupcake + "pieces";
+        document.getElementById("keyscore").innerHTML = key + "pieces";
+        
+
+        
+        
+       /* maze.innerHTML=`<img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png" id="kitten" alt="kitten" width="30px" height="30px">
+        <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px">`;
+        let po = getKittenPosition();
+        kitten.style.bottom = (po[0]*30) + "px";
+        kitten.style.left = (po[1]*30) + "px";*/
+
+        
+
+
+     
+
+        for(let i=0 ; i < map.length; i++){
             let row = document.createElement("div"); //สร้าง div แต่ละ row (0-3): <div></div>
             row.classList.add("row"); //ใส่ชื่อ class row  : <div class="row"></div>
 
-            for (let j = 0; j < map[i].length; j++) {
+            for(let j=0 ; j< map[i].length ;j++){
                 let cell = document.createElement("div");
-                cell.classList.add("cell");
+                cell.classList.add("cell"); 
 
                 /*
                     <div class="row">
@@ -207,59 +324,45 @@
                 
                 */
 
-                if (map[i][j] == 0) {
+                if(map[i][j][0] == 0){
                     cell.classList.add("wall");
                 }
 
-                if (i == 0 && j == 0) {
-                    map[i][j] = 2; //กำหนดตำแหน่งแมวเป็น 2 คือจุด 0 0
+                if(map[i][j][0] == 5){
+                    cell.classList.add("bomb");
+                }
+
+                if(map[i][j][0] == 3){
+                    cell.classList.add("cupcake");
+                }
+
+                if(map[i][j][0] == 4){
+                    cell.classList.add("key");
+                }
+
+
+
+                if(i == 0 && j == 0){
+                    map[i][j][0] = 2; //กำหนดตำแหน่งแมวเป็น 2 คือจุด 0 0
                 }
                 row.appendChild(cell); //ให้ div cell อยู่ใน div row
-
+                
             }
             maze.appendChild(row); //ให้ div row อยู่ใน div maze
         }
 
-        /*setKittenPositin(0,0);
-        setHousePositin(0,0);*/
+      
+        //setKittenPosition(0,30);
+        /*setHousePosition(0,30);*/
 
-        timeCount()
-    }
-    let countSec = 5;
-    let countMin = 2;
-    let countAll = null
-
-    function timeCount() {
-        countAll = setInterval(time, 1000)
-    }
-    function time() {
-        if (countSec != 0 && countMin > -1) {
-            sec.innerHTML = countMin+" : "+ countSec;
-            countSec--
-                if(countSec==0){
-                    countSec = 60
-                    countMin--
-                }
-
-        } else {
-            sec.innerHTML = 0;
-            clearInterval(countAll)
-            Swal.fire({
-                title: 'Sweet!',
-                text: 'Modal with a custom image.',
-                imageUrl: 'https://unsplash.it/400/200',
-                imageWidth: 400,
-                imageHeight: 200,
-                imageAlt: 'Custom image',
-                })
-        }
     }
 
-    function getKittenPosition() {
-        let position = [-1, -1]; //กำหนดไว้ชั่วคราว
-        for (let i = 0; i < map.length; i++) {
-            for (let j = 0; j < map[i].length; j++) {
-                if (map[i][j] == 2) {
+
+    function getKittenPosition(){
+        let position = [-1,-1]; //กำหนดไว้ชั่วคราว
+        for(let i=0 ; i<map.length ; i++){
+            for(let j=0 ; j<map[i].length ; j++){
+                if(map[i][j][0]==2){
                     position[0] = i;
                     position[1] = j;
                 }
@@ -270,71 +373,246 @@
         return position;
     }
 
+    /*var kitleft = 0;
+    var kittop = 0;*/
+
     document.addEventListener("keydown",
+    function (e){
+        kitten = document.getElementById("kitten");
+        house = document.getElementById("house");
 
+        let kittenLeft = kitten.offsetLeft;
+        let kittenTop = kitten.offsetTop;
 
-        function (e) {
-            let kitten = document.getElementById("kitten");
-            let house = document.getElementById("house");
+        let houseLeft = house.offsetLeft;
+        let houseTop = house.offsetTop;
 
-            let kittenLeft = kitten.offsetLeft;
-            let kittenTop = kitten.offsetTop;
+        let kittenPosition = getKittenPosition();
 
-            let houseLeft = house.offsetLeft;
-            let houseTop = house.offsetTop;
+        if((e.key == "ArrowRight" || e.key == "d") && kittenLeft < (map.length - 1)*30 && map[kittenPosition[0]][kittenPosition[1] + 1 ][0] != 0){   
+                kittenLeft += 30;
 
-            let kittenPosition = getKittenPosition();
+                if(map[kittenPosition[0]][kittenPosition[1] + 1 ][1] == 1){
+                    seconds = null;
+                    Swal.fire({
+                    imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
+                    imageHeight: 150,
+                    title : 'OH THIS IS BOOM MEOWWWW!!',
+                    text: 'Click button to try again Meow!',
+                    imageAlt: 'A tall image',
+                    confirmButtonText: 'MEOW'}).then((result) => {
+                        if (result.isConfirmed) {
+                            count = 1;
+                            createMaze();
+                            return;
+                        }else{
+                            count = 1;
+                            createMaze();
+                            return;
+                        }
+                    })
+                }
 
-            if (e.key == "ArrowRight" && kittenLeft < (map.length - 1) * 40 && map[kittenPosition[0]][kittenPosition[1] + 1] == 1) {
-                kittenLeft += 40;
+                if(map[kittenPosition[0]][kittenPosition[1] + 1 ][1] == 2){
+                    count_Cupcake = count_Cupcake+1
+                    kitten.style.left = kittenLeft + "px";
+                    map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                    map[kittenPosition[0]][kittenPosition[1] + 1 ][0]  = 2;
+                    map[kittenPosition[0]][kittenPosition[1] + 1 ][1] = 0;
+                    console.log("cupcake" + count_Cupcake)
+                    createMaze();
+                    return;
+                }
+
                 kitten.style.left = kittenLeft + "px";
-                map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0]][kittenPosition[1] + 1] = 2;
+                map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                map[kittenPosition[0]][kittenPosition[1] + 1 ][0]  = 2;
+                
 
-            }
-
-            if (e.key == "ArrowLeft" && kittenLeft > 0 && map[kittenPosition[0]][kittenPosition[1] - 1] == 1) {
-                kittenLeft -= 40;
-                kitten.style.left = kittenLeft + "px";
-                map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0]][kittenPosition[1] - 1] = 2;
-
-            }
-
-
-
-            if (e.key == "ArrowUp" && kittenTop > 0 && map[kittenPosition[0] - 1][kittenPosition[1]] == 1 || map[kittenPosition[0][kittenPosition[5]]]) {
-                kittenTop -= 40;
-                kitten.style.top = kittenTop + "px";
-                map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0] - 1][kittenPosition[1]] = 2;
-
-            }
-
-            if (e.key == "ArrowDown" && kittenTop < (map.length - 1) * 40 && map[kittenPosition[0] + 1][kittenPosition[1]] == 1) {
-                kittenTop += 40;
-                kitten.style.top = kittenTop + "px";
-                map[kittenPosition[0]][kittenPosition[1]] = 1;
-                map[kittenPosition[0] + 1][kittenPosition[1]] = 2;
-
-            }
-
-            if (kittenLeft == houseLeft && kittenTop == houseTop) {
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
-            }
-
-
+            
         }
 
+        if((e.key == "ArrowLeft" || e.key == "a") && kittenLeft > 0 && map[kittenPosition[0]][kittenPosition[1] - 1 ][0] != 0 ){
+                kittenLeft -= 30;
+                
+                if(map[kittenPosition[0]][kittenPosition[1] - 1 ][1] == 1){
+                    seconds = null;
+                    Swal.fire({
+                    imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
+                    imageHeight: 150,
+                    title : 'OH THIS IS BOOM MEOWWWW!!',
+                    text: 'Click button to try again Meow!',
+                    imageAlt: 'A tall image',
+                    confirmButtonText: 'MEOW'}).then((result) => {
+                        if (result.isConfirmed) {
+                            count = 1;
+                            createMaze();
+                            return;
+                        }else{
+                            count = 1;
+                            createMaze();
+                            return;
+                        }
+                    })
+                }
+
+                if(map[kittenPosition[0]][kittenPosition[1] - 1 ][1] == 2){
+                    count_Cupcake = count_Cupcake+1
+                    kitten.style.left = kittenLeft + "px";
+                    map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                    map[kittenPosition[0]][kittenPosition[1] - 1 ][0]  = 2;
+                    map[kittenPosition[0]][kittenPosition[1] - 1 ][1] = 0;
+                    console.log("cupcake" + count_Cupcake)
+                    createMaze();
+                    return;
+                }
+                kitten.style.left = kittenLeft + "px";
+                map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                map[kittenPosition[0]][kittenPosition[1] - 1 ][0]  = 2;
+
+            
+        }
+
+
+
+        if((e.key == "ArrowUp" || e.key == "w") && kittenTop > 0 && map[kittenPosition[0] - 1][kittenPosition[1]][0] != 0 ){
+                kittenTop -= 30;
+                
+                if(map[kittenPosition[0] - 1][kittenPosition[1]][1] == 1){
+                    seconds = null;
+                    Swal.fire({
+                    imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
+                    imageHeight: 150,
+                    title : 'OH THIS IS BOOM MEOWWWW!!',
+                    text: 'Click button to try again Meow!',
+                    imageAlt: 'A tall image',
+                    confirmButtonText: 'MEOW'}).then((result) => {
+                        if (result.isConfirmed) {
+                            count = 1;
+                            createMaze();
+                            return;
+                        }else{
+                            count = 1;
+                            createMaze();
+                            return;
+                        }
+                    })
+                }
+
+                if(map[kittenPosition[0] - 1][kittenPosition[1]][1] == 2){
+                    count_Cupcake = count_Cupcake+1
+                    kitten.style.top = kittenTop + "px";
+                    map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                    map[kittenPosition[0] - 1][kittenPosition[1]][0]  = 2;
+                    map[kittenPosition[0] - 1 ][kittenPosition[1]][1] = 0;
+                    console.log("cupcake" + count_Cupcake)
+                    createMaze();
+                    return;
+                }
+
+                if(map[kittenPosition[0] - 1][kittenPosition[1]][1] == 3){
+                    key = 1
+                    kitten.style.top = kittenTop + "px";
+                    map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                    map[kittenPosition[0] - 1][kittenPosition[1]][0]  = 2;
+                    map[kittenPosition[0] - 1 ][kittenPosition[1]][1] = 0;
+                    console.log("Key" + key)
+                    createMaze();
+                    return;
+                }
+                kitten.style.top = kittenTop + "px";
+                map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                map[kittenPosition[0] - 1][kittenPosition[1]][0]  = 2;
+
+            
+        }
+
+        if((e.key == "ArrowDown" || e.key == "s") && kittenTop < (map.length - 1)*30 && map[kittenPosition[0] + 1][kittenPosition[1]][0] != 0 ){
+                kittenTop += 30;
+                
+                if(map[kittenPosition[0] + 1][kittenPosition[1]][1] == 1){
+                    seconds = null;
+                    Swal.fire({
+                    imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
+                    imageHeight: 150,
+                    title : 'OH THIS IS BOOM MEOWWWW!!',
+                    text: 'Click button to try again Meow!',
+                    imageAlt: 'A tall image',
+                    confirmButtonText: 'MEOW'}).then((result) => {
+                        if (result.isConfirmed) {
+                            count = 1;
+                            createMaze();
+                            return;
+                        }else{
+                            count = 1;
+                            createMaze();
+                            return;
+                        }
+                    })
+                }
+
+                if(map[kittenPosition[0] + 1 ][kittenPosition[1]][1] == 2){
+                    count_Cupcake = count_Cupcake+1
+                    kitten.style.top = kittenTop + "px";
+                    map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                    map[kittenPosition[0] + 1][kittenPosition[1]][0]  = 2;
+                    map[kittenPosition[0] + 1][kittenPosition[1]][1] = 0;
+                    console.log("cupcake" + count_Cupcake)
+                    createMaze();
+                    return;
+                }
+
+                kitten.style.top = kittenTop + "px";
+                map[kittenPosition[0]][kittenPosition[1]][0] = 1;
+                map[kittenPosition[0] + 1][kittenPosition[1]][0]  = 2;
+
+            
+        }
+
+        if(kittenLeft == houseLeft && kittenTop == houseTop && key ==1){
+            Swal.fire({
+            imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/2-2.thumb128.png',
+            imageHeight: 150,
+            title : 'AMAZING MEOW MEOW!',
+            text: 'Click button Meow!',
+            imageAlt: 'A tall image'
+            })
+
+            //createMaze();
+            
+            /*Swal.fire(
+                'AMAZING MEOW MEOW!',
+                'Click button Meow!',
+                'success Meow!!'
+            )*/
+            }else if(kittenLeft == houseLeft && kittenTop == houseTop){
+                Swal.fire({
+                imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/17-2.thumb128.png',
+                imageHeight: 150,
+                title : 'I can not go inside Meowww!!',
+                text: 'Please collect the Key MEOWWW!',
+                text: 'Click button Meow!',
+                imageAlt: 'A tall image'
+
+            })
+            }
+
+
+    }
     )
 
+    function restart(){
+        count = 1;
+        createMaze();
+    }
 
-//a
 
+    //window.localStorage.setItem('game-state',JSON)
+
+    
+
+
+    
 
 
 

@@ -65,7 +65,7 @@ session_start()
     </div>
     <div class="container">
         <div class="button-maze" onclick="maze()">Start</div>
-        <div class="button-maze" onclick="cha()">Select Character</div>
+        <div class="button-maze" onclick="character()">Select Character</div>
         <div class="button-maze" onclick="showPopup()">How to play</div>
     </div>
     <?php echo "hi"?>
@@ -73,8 +73,8 @@ session_start()
         function maze(){
             window.location.href = "Maze.html"
         }
-        function cha(){
-            window.location.href = "#"
+        function character(){
+            window.location.href = "Cha.html"
         }
         function showPopup() {
             Swal.fire({
