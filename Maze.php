@@ -1,5 +1,5 @@
-<?php 
-$image = $_GET['img'];
+<?php
+ $img = $_GET['img'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,199 +8,50 @@ $image = $_GET['img'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style-maze.css">
+    <link rel="stylesheet" href="/style-maze.css">
 </head>
 
-<style>
-   
-   * {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        background-color: #ffc0cb;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    h1 {
-        font-size: 50px;
-        color: black;
-        margin-bottom: 20px;
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    #maze-container {
-        border: 10px solid black;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: max-content;
-    }
-
-    .row {
-        display: flex;
-    }
-
-    .cell {
-        width: 30px;
-        height: 30px;
-        background-color: #F2D1D1;
-    }
-
-    .wall {
-        background-color: black;
-    }
-
-    .bomb {
-        content: url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/60401/bomb-clipart-xl.png);
-    }
-
-    .cupcake {
-        content: url(https://static.vecteezy.com/system/resources/previews/019/606/495/non_2x/cupcake-graphic-clipart-design-free-png.png);
-    }
-
-    .key {
-        content: url(https://www.pngmart.com/files/8/Key-PNG-Free-Image-1.png);
-    }
-
-    .timer {
-        background-color: #FFEBEB;
-        color: rgb(0, 0, 0);
-        margin-top: 310px;
-        margin-left: 140px;
-        text-align: center;
-        font-size: 24px;
-        padding: 40px;
-        border-radius: 8px;
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        left: 20px;
-    }
-
-    #maze-container {
-        margin-top: 20px;
-        position: relative;
-    }
-
-    #kitten {
-        position: absolute;
-        height: 30px;
-        width: 30px;
-        bottom: 0px;
-        left: 30px;
-    }
-
-    #house {
-        position: absolute;
-        right: 30px;
-        top: 0;
-    }
-
-    .score-board {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-content: flex-end;
-        margin-top: 300px;
-        margin-right: 50px;
-        gap: 40px;
-        position: absolute;
-        top: 0;
-        right: 20px;
-    }
-
-    .board-cupcakescore {
-        text-align: center;
-        padding: 20px;
-        background-color: #FFD3B0;
-        border-radius: 7px;
-    }
-
-    .board-keyscore {
-        text-align: center;
-        padding: 20px;
-        background-color: #FFD3B0;
-        border-radius: 7px;
-    }
-
-    .cupcake-title,
-    .key-title {
-        font-weight: bold;
-    }
-
-    .cupcake-score,
-    .key-score {
-        margin-top: 10px;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    .Restart-button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #F29393;
-        color: #FCE2DB;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 20px;
-    }
-
-    .Restart-button:hover {
-        background-color: #ffc6ae;
-        color: #F29393;
-    }
-
-
-
-    
-</style>
 
 <body onload="createMaze()" style="font-family: Open Sans, -apple-system, BlinkMacSystemFont,Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell,Helvetica Neue, Helvetica, Arial, sans-serif;">
     
-    <h1> Kitten Maze</h1>
-    <div id="maze-container">
-        <div id="character"><img src="<?php echo $image;?>" id="kitten" alt="kitten" width="30px" height="30px">
-        <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px">
-        </div>
-        <div id="maze"></div>
-    </div>
-    <?php  echo $image;?>
-
-    <div class="score_board">
-
-        <div class="board cupcakescore">
-          <div class="cupcake-title">
-            CUPCAKE
-          </div>
-          <div class="cupcake-score">
-            <p id="cakescore">0</p>
-          </div>
-        </div>
-
-        <div class="board keyscore">
-          <div class="key-title">
-            KEY
-          </div>
-          <div class="key-score">
-            <p id="keyscore">0</p>
-          </div>
-        </div>
-    </div>
     
-    <div id="timer" class="timer"></div>
-
-
-
-    <button class="Restart-button" onclick="restart()"> Restart </button>
-
-
-
+        <h1> Kitten Maze</h1>
+    
+        <div id="timer" class="timer"></div>
+    
+        <div class="score-board"> 
+            <div class="board-cupcakescore">
+                <img src="https://static.vecteezy.com/system/resources/previews/019/606/495/non_2x/cupcake-graphic-clipart-design-free-png.png" id="cupcake" alt="house" width="30px" height="30px">
+              <div class="cupcake-title">
+                CUPCAKE
+              </div>
+              <div class="cupcake-score">
+                <p id="cakescore">0</p>
+              </div>
+            </div>
+    
+            <div class="board-keyscore">
+                <img src="https://www.pngmart.com/files/8/Key-PNG-Free-Image-1.png" id="key" alt="house" width="30px" height="30px">
+                
+              <div class="key-title">
+                KEY
+              </div>
+              <div class="key-score">
+                <p id="keyscore">0</p>
+              </div>
+            </div>
+        </div>
+        
+        <div id="maze-container">
+            <div id="character"><img src="<?php echo $img;?>" id="kitten" alt="kitten" width="30px" height="30px">
+            <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px">
+            </div>
+            <div id="maze"></div>
+        </div>
+    
+        <button class="Restart-button" onclick="restart()"> Restart </button>
+    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -219,7 +70,6 @@ $image = $_GET['img'];
     // ------------------------------ Time ------------------------------------
 
 var seconds = 60;
-
            
 function NubwiNatee(){
     
@@ -233,6 +83,7 @@ function NubwiNatee(){
     document.getElementById("timer").innerHTML = mimnutes + " : " + Nubwi;
 
     if(seconds == 0){
+        document.getElementById("timer").style.color = "#FFEBEB ";
         seconds = null;
         Swal.fire({
         imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/23-2.thumb128.png',
@@ -242,10 +93,12 @@ function NubwiNatee(){
         imageAlt: 'A tall image',
         confirmButtonText: 'MEOW'}).then((result) => {
             if (result.isConfirmed) {
+                ready = 1;
                 count = 1;
                 createMaze();
                 return;
             }else{
+                ready = 1;
                 count = 1;
                 createMaze();
                 return;
@@ -276,6 +129,9 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
         kitten.style.left = y + "px";
     }
 
+    
+
+
     var map =
         [  //position(add class)1 0=wall , 1=space , 2=kitten  , 3=cupcake , 5=bomb  position(active)2  0=nothing , 1=boom bomb , 2=collect cupcake
             // cupcake [3,2]  , bomb [5,1] , kitten [2,0] , wall [0,0] , space [1,0]
@@ -303,11 +159,43 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
     var count = 0
     var count_Cupcake = 0
     var key = 0;
-
+    var ready = 1;
 
     function createMaze(){
+        
+        document.getElementById("timer").style.color = "#FFEBEB"; 
 
-        NubwiNatee();
+        if(count_Cupcake>0 || key>0){
+            document.getElementById("timer").style.color = "black";
+        }
+        
+
+
+        if(ready == 1){
+            Swal.fire({
+            imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/39-2.thumb128.png',
+            imageHeight: 150,
+            title : 'ARE YOU READY MEOW ?',
+            text: 'Click button to start!',
+            imageAlt: 'A tall image',
+            confirmButtonText: 'MEOW'}).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("timer").style.color = "black";
+                    seconds = 60;
+                    ready = 0;
+                    NubwiNatee();
+                    return;
+                }else{
+                    document.getElementById("timer").style.color = "black";
+                    seconds = 60;
+                    NubwiNatee();
+                    ready = 0;
+                    return;
+                        }
+                    })
+        }
+        
+
         
         if(count == 1){
             
@@ -317,7 +205,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
             key = 0
             
 
-            character.innerHTML=`<img src="<?php echo $image;?>" id="kitten" alt="kitten" width="30px" height="30px">
+            character.innerHTML=`<img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png" id="kitten" alt="kitten" width="30px" height="30px">
         <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px"> `
         
 
@@ -348,8 +236,8 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
         
         maze.innerHTML = ``
 
-        document.getElementById("cakescore").innerHTML = count_Cupcake + "pieces";
-        document.getElementById("keyscore").innerHTML = key + "pieces";
+        document.getElementById("cakescore").innerHTML = count_Cupcake + " / 10";
+        document.getElementById("keyscore").innerHTML = key + " / 1";
         
 
         
@@ -454,6 +342,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 kittenLeft += 30;
 
                 if(map[kittenPosition[0]][kittenPosition[1] + 1 ][1] == 1){
+                    document.getElementById("timer").style.color = "#FFEBEB ";
                     seconds = null;
                     Swal.fire({
                     imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
@@ -463,10 +352,12 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                     imageAlt: 'A tall image',
                     confirmButtonText: 'MEOW'}).then((result) => {
                         if (result.isConfirmed) {
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
                         }else{
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
@@ -475,6 +366,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 }
 
                 if(map[kittenPosition[0]][kittenPosition[1] + 1 ][1] == 2){
+                    map[0][0][0] = 0;
                     count_Cupcake = count_Cupcake+1
                     kitten.style.left = kittenLeft + "px";
                     map[kittenPosition[0]][kittenPosition[1]][0] = 1;
@@ -497,6 +389,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 kittenLeft -= 30;
                 
                 if(map[kittenPosition[0]][kittenPosition[1] - 1 ][1] == 1){
+                    document.getElementById("timer").style.color = "#FFEBEB ";
                     seconds = null;
                     Swal.fire({
                     imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
@@ -506,10 +399,12 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                     imageAlt: 'A tall image',
                     confirmButtonText: 'MEOW'}).then((result) => {
                         if (result.isConfirmed) {
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
                         }else{
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
@@ -518,6 +413,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 }
 
                 if(map[kittenPosition[0]][kittenPosition[1] - 1 ][1] == 2){
+                    map[0][0][0] = 0;
                     count_Cupcake = count_Cupcake+1
                     kitten.style.left = kittenLeft + "px";
                     map[kittenPosition[0]][kittenPosition[1]][0] = 1;
@@ -540,6 +436,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 kittenTop -= 30;
                 
                 if(map[kittenPosition[0] - 1][kittenPosition[1]][1] == 1){
+                    document.getElementById("timer").style.color = "#FFEBEB ";
                     seconds = null;
                     Swal.fire({
                     imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
@@ -549,10 +446,12 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                     imageAlt: 'A tall image',
                     confirmButtonText: 'MEOW'}).then((result) => {
                         if (result.isConfirmed) {
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
                         }else{
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
@@ -561,6 +460,8 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 }
 
                 if(map[kittenPosition[0] - 1][kittenPosition[1]][1] == 2){
+                    map[0][0][0] = 0;
+                    console.log(map);
                     count_Cupcake = count_Cupcake+1
                     kitten.style.top = kittenTop + "px";
                     map[kittenPosition[0]][kittenPosition[1]][0] = 1;
@@ -572,6 +473,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 }
 
                 if(map[kittenPosition[0] - 1][kittenPosition[1]][1] == 3){
+                    map[0][0][0] = 0;
                     key = 1
                     kitten.style.top = kittenTop + "px";
                     map[kittenPosition[0]][kittenPosition[1]][0] = 1;
@@ -592,6 +494,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 kittenTop += 30;
                 
                 if(map[kittenPosition[0] + 1][kittenPosition[1]][1] == 1){
+                    document.getElementById("timer").style.color = "#FFEBEB ";
                     seconds = null;
                     Swal.fire({
                     imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/19-2.thumb128.png',
@@ -601,10 +504,12 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                     imageAlt: 'A tall image',
                     confirmButtonText: 'MEOW'}).then((result) => {
                         if (result.isConfirmed) {
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
                         }else{
+                            ready = 1;
                             count = 1;
                             createMaze();
                             return;
@@ -613,6 +518,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
                 }
 
                 if(map[kittenPosition[0] + 1 ][kittenPosition[1]][1] == 2){
+                    map[0][0][0] = 0;
                     count_Cupcake = count_Cupcake+1
                     kitten.style.top = kittenTop + "px";
                     map[kittenPosition[0]][kittenPosition[1]][0] = 1;
@@ -631,13 +537,111 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
         }
 
         if(kittenLeft == houseLeft && kittenTop == houseTop && key ==1){
-            Swal.fire({
-            imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/2-2.thumb128.png',
-            imageHeight: 150,
-            title : 'AMAZING MEOW MEOW!',
-            text: 'Click button Meow!',
-            imageAlt: 'A tall image'
-            })
+            document.getElementById("timer").style.color = "#FFEBEB ";
+            seconds = null;
+
+            if(count_Cupcake == 10 ){
+                Swal.fire({
+                imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/1-2.thumb128.png',
+                imageHeight: 150,
+                title : 'PURRRRR PERFECTT!! MEOW MEOW! Cupcake : '+count_Cupcake +' / 10',
+                text: 'Click button Meow!',
+                imageAlt: 'A tall image',
+                confirmButtonText: 'MEOW Again?'}).then((result) => {
+                            if (result.isConfirmed) {
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }else{
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }
+                        })
+                }else if(count_Cupcake >= 8 ){
+                Swal.fire({
+                imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/2-2.thumb128.png',
+                imageHeight: 150,
+                title : 'AMAZING MEOW MEOW! Cupcake : '+count_Cupcake +' / 10',
+                text: 'Click button Meow!',
+                imageAlt: 'A tall image',
+                confirmButtonText: 'MEOW Again?'}).then((result) => {
+                            if (result.isConfirmed) {
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }else{
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }
+                        })
+                }else if(count_Cupcake >= 6 ){
+                Swal.fire({
+                imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/15-2.thumb128.png',
+                imageHeight: 150,
+                title : 'GOOD JOB MEOW MEOW! Cupcake : '+count_Cupcake +' / 10',
+                text: 'Click button Meow!',
+                imageAlt: 'A tall image',
+                confirmButtonText: 'MEOW Again?'}).then((result) => {
+                            if (result.isConfirmed) {
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }else{
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }
+                        })
+                }else if(count_Cupcake >= 4 ){
+                Swal.fire({
+                imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/8-2.thumb128.png',
+                imageHeight: 150,
+                title : 'WELL DONE...MEOW MEOW! Cupcake : '+count_Cupcake +' / 10',
+                text: 'Click button Meow!',
+                imageAlt: 'A tall image',
+                confirmButtonText: 'MEOW Again?'}).then((result) => {
+                            if (result.isConfirmed) {
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }else{
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }
+                        })
+                }else{
+                Swal.fire({
+                imageUrl: 'https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/20-2.thumb128.png',
+                imageHeight: 150,
+                title : 'I...WANT...MORE...CUPCAKE!!! MEOW! Cupcake : '+count_Cupcake +' / 10',
+                text: 'Click button Meow!',
+                imageAlt: 'A tall image',
+                confirmButtonText: 'MEOW Again?'}).then((result) => {
+                            if (result.isConfirmed) {
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }else{
+                                ready = 1;
+                                count = 1;
+                                createMaze();
+                                return;
+                            }
+                        })
+                }
+                
 
             //createMaze();
             
@@ -663,6 +667,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
     )
 
     function restart(){
+        ready = 1;
         count = 1;
         createMaze();
     }

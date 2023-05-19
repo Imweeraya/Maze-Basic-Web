@@ -90,11 +90,11 @@ session_start()
     <?php echo "hi" ?>
     <script>
         function maze() {
-            window.location.href = "Maze.html"
+            window.location.href = "Maze.php?img="+"https://storage.googleapis.com/sticker-prod/h3fYKAtBc7bJHvjP2MDW/22.thumb128.png"
         }
 
         function character() {
-            window.location.href = "Cha.html"
+            window.location.href = "Cha.php"
         }
 
         function showPopup() {

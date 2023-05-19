@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffc0cb;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 50px;
+    color: black;
+    margin-bottom: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#maze-container {
+    border: 10px solid black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #F2D1D1;
+}
+
+.wall {
+    background-color: black;
+}
+
+.bomb {
+    content: url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/60401/bomb-clipart-xl.png);
+}
+
+.cupcake {
+    content: url(https://static.vecteezy.com/system/resources/previews/019/606/495/non_2x/cupcake-graphic-clipart-design-free-png.png);
+}
+
+.key {
+    content: url(https://www.pngmart.com/files/8/Key-PNG-Free-Image-1.png);
+}
+
+.timer {
+    background-color: #FFEBEB;
+    color: rgb(0, 0, 0);
+    margin-top: 310px;
+    margin-left: 140px;
+    text-align: center;
+    font-size: 24px;
+    padding: 40px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+#maze-container {
+    margin-top: 20px;
+    position: relative;
+}
+
+#kitten {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    bottom: 0px;
+    left: 30px;
+}
+
+#house {
+    position: absolute;
+    right: 30px;
+    top: 0;
+}
+
+
+
+.score-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 220px;
+    margin-right: 120px;
+    gap: 30px;
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+
+
+.board-cupcakescore {
+    text-align: center;
+    padding: 30px;
+    background-color: #FFD3B0;
+    border-radius: 7px;
+}
+
+.board-keyscore {
+    text-align: center;
+    padding: 30px 50px;
+    background-color: #FFD3B0;
+    border-radius: 7px;
+}
+
+.cupcake-title,
+.key-title {  
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.cupcake-score,
+.key-score {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.Restart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #F29393;
+    color: #FCE2DB;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.Restart-button:hover {
+    background-color: #ffc6ae;
+    color: #F29393;
+}
