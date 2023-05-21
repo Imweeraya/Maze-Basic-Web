@@ -205,7 +205,7 @@ var countdownTimer = setInterval('NubwiNatee()',1000)
             key = 0
             
 
-            character.innerHTML=`<img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/37-2.thumb128.png" id="kitten" alt="kitten" width="30px" height="30px">
+            character.innerHTML=`<img src="<?php echo $img;?>" id="kitten" alt="kitten" width="30px" height="30px">
         <img src="https://cdn-icons-png.flaticon.com/512/3048/3048222.png" id="house" alt="house" width="30px" height="30px"> `
         
 

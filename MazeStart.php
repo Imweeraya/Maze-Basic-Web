@@ -69,13 +69,19 @@ session_start()
         .button-maze:hover {
             background-color: #f5c6c9;
         }
+        .music{
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 100%;
+            margin-top: 2rem;
+            margin-left: 2rem;
+        }
     </style>
 </head>
 
 <body>
-    <audio controls loop autoplay>
-        <source srcset="BMGPM_GRML0059_020_Game_On_A_Day-Off__Ohmori.mp3" type="audio/mp3">
-    </audio>
+    <div class="music" onclick="music()"></div>
 
     <div class="top">
         <div class="img-l"><img src="https://storage.googleapis.com/sticker-prod/sX90U4BNjjsjvGRuqTnk/3-2.thumb128.png" alt="cat-l"></div>
@@ -89,6 +95,11 @@ session_start()
     </div>
     <?php echo "hi" ?>
     <script>
+        var audioBoom = new Audio("BMGPM_GRML0059_020_Game_On_A_Day-Off__Ohmori.mp3");
+        function music(){
+            audioBoom.play();
+        }
+
         function maze() {
             window.location.href = "Maze.php?img="+"https://storage.googleapis.com/sticker-prod/h3fYKAtBc7bJHvjP2MDW/22.thumb128.png"
         }

@@ -78,7 +78,7 @@
                                 <td colspan="2" class="nameGroup">♥ ♥ ♥ ♥ ♥</td>
                             </tr>
                         </table>
-                        <div class="submit" onclick="img1()">Start</div>
+                        <div class="submit" onclick="img5()">Start</div>
                     </div>
                 </div>
                 <div class="item">
@@ -92,7 +92,7 @@
                                 <td colspan="2" class="nameGroup">♥ ♥ ♥ ♥ ♥</td>
                             </tr>
                         </table>
-                        <div class="submit" onclick="img1()">Start</div>
+                        <div class="submit" onclick="img6()">Start</div>
                     </div>
                 </div>
                 <div class="item">
@@ -106,7 +106,7 @@
                                 <td colspan="2" class="nameGroup">♥ ♥ ♥ ♥ ♥</td>
                             </tr>
                         </table>
-                        <div class="submit" onclick="img1()">Start</div>
+                        <div class="submit" onclick="img7()">Start</div>
                     </div>
                 </div>
                 <div class="item">
@@ -120,7 +120,7 @@
                                 <td colspan="2" class="nameGroup">♥ ♥ ♥ ♥ ♥</td>
                             </tr>
                         </table>
-                        <div class="submit" onclick="img1()">Start</div>
+                        <div class="submit" onclick="img8()">Start</div>
                     </div>
                 </div>
             </div>
